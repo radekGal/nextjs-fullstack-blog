@@ -3,7 +3,7 @@ import { MdxPreview } from "@/components/ui/mdx-preview";
 import Image from "next/image";
 
 const getData = async (id: string) => {
-  const res = await fetch(`http://localhost:3000/api/posts/${id}`,
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/posts/${id}`,
     {
       cache: "no-store",
     }
