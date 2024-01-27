@@ -2,7 +2,7 @@
 
 import { activeLink } from "@/utils/activeLink"
 import { navbarLinksAuth } from "@/utils/links"
-import { signOut, useSession } from "next-auth/react"
+import { signIn, signOut, useSession } from "next-auth/react"
 import Image from "next/image"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
@@ -19,8 +19,7 @@ export const AuthNav = ({ onClick }: AuthNavProps) => {
   return(
     <>
       {status === 'loading' && <span>Login</span>}
-      {/* {status === 'unauthenticated' && <button onClick={() => signIn({ callBack :'/api/auth/signin'})} className="hover:font-bold">Login</button>} */}
-      {status === 'unauthenticated' && <Link href='/api/auth/signin' className="hover:font-bold">Login</Link>}
+      {status === 'unauthenticated' && <button onClick={() => signIn()} className="hover:font-bold">Login</button>}
       {status === 'authenticated' && (
         <>
           {navbarLinksAuth.map(link => (
@@ -33,7 +32,12 @@ export const AuthNav = ({ onClick }: AuthNavProps) => {
               {link.title}
             </Link>
           ))}
-          <Link href="/api/auth/signout">Logout</Link>
+          <button 
+            onClick={() => signOut({ callbackUrl: process.env.NEXTAUTH_URL })} 
+            className="hover:font-bold my-1 md:my-0"
+          >
+            Logout
+          </button>
           <Image 
             width={30} height={30} 
             src={data?.user?.image as string} 

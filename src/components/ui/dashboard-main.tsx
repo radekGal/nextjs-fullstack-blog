@@ -24,7 +24,7 @@ export const DashboardMain = ({ onClick }: DashboardMainProps) => {
           {link.title}
         </Link>
       ))}
-      <button onClick={() => signOut({ callbackUrl: 'http://localhost:3000' })} className="my-1 hover:font-bold">Logout</button>
+      <button onClick={() => signOut({ callbackUrl: process.env.NEXTAUTH_URL })} className="my-1 hover:font-bold">Logout</button>
     </>
   )
 }
