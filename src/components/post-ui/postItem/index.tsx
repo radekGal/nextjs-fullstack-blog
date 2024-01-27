@@ -17,10 +17,10 @@ type PostItemProps = {
 
 const PostItem = ({ item, className, height }: PostItemProps) => {
   return(
-    <Link href={`/posts/${item.id}`} className={`${className} mb-6`}>
+    <Link href={`/posts/${item?.id}`} className={`${className} mb-6`}>
       <>
        <Image 
-          src={item.imageUrl!} 
+          src={item?.imageUrl!} 
           alt="image"  
           width={0}
           height={0}
@@ -28,9 +28,9 @@ const PostItem = ({ item, className, height }: PostItemProps) => {
           style={{ width: '100%', height: `${height}` }}
         />
         <div className="mt-4">
-          <h2 className="font-bold text-lg">{item.title}</h2>
-          <MdxPreview source={`${item.desc.slice(0, 120)}...`} />
-          <PostCreator image={item?.author?.image} creator={item?.author?.name} date={new Date(`${item.createAt}`).toDateString()} />
+          <h2 className="font-bold text-lg">{item?.title}</h2>
+          <MdxPreview source={`${item?.desc.slice(0, 120)}...`} />
+          <PostCreator image={item?.author?.image} creator={item?.author?.name} date={new Date(`${item?.createAt}`).toDateString()} />
         </div>
       </>
     </Link>

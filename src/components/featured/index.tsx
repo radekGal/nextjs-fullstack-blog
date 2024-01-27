@@ -6,7 +6,7 @@ import { getPosts } from "@/utils/getPosts";
 const Featured = async () => {
 
   const posts = await getPosts();
-  const post = posts.at(0);
+  const post = posts?.at(0);
 
   return(
     <section>
